@@ -9,7 +9,7 @@ class BSGraph:
         splitLines = lines.split("\n")
         
         for line in splitLines:
-            print(line)
+            #print(line)
             movieWithActors = line.split("/")
             
             #assume the movie doesnt exist to begin with
@@ -37,6 +37,10 @@ class BSGraph:
                 #Now that we have the right indexes in the variables, create the edge                    
                 self.edges[0].append(movieIndex)
                 self.edges[1].append(actorIndex)
+
+        #print(self.ActMov)
+        #print(self.edges[0])
+        #print(self.edges[1])
     
     def displayActMov(self):
         f= open("outputPS2.txt","a+")
@@ -66,13 +70,77 @@ class BSGraph:
             
         f.write("-----------------------------------------\n")
         f.close()
-    
+    def getActorOrMovieAt(self,index):
+        if index<0 or index >= len(self.ActMov):
+            return ""
+        else:
+            return self.ActMov[index]
+        
+    def getActorOrMovieIndex(self, actorOrMovie):
+        index = 0
+        for i in (self.ActMov):
+            if i == actorOrMovie:
+                return index #found
+            index = index+1
+        return -1 # not found
+
+    def displayActorsOfMovie(self, movie):
+        print("--------Function displayActorsOfMovie--------")
+        print("Movie name: "+movie)
+        print("List of Actors:")
+        movie_index = self.getActorOrMovieIndex(movie)
+        if movie_index != -1:
+            index = 0
+            for mi in self.edges[0]:
+                if mi == movie_index: #movie index found in list of movies
+                    ai = self.edges[1][index]
+                    print(self.getActorOrMovieAt(ai))
+                index = index + 1
+        else:
+            print("Actor not found")
+            
     def displayMoviesOfActor(self, actor):
-        return 
-    
-    def displayActorsOfMovie(self,movie):
-        return 
-    
+        
+        print("--------Function displayMoviesOfActor--------")
+        print("Actor name: "+actor)
+        print("List of Movies:")
+        actor_index = self.getActorOrMovieIndex(actor)
+        if actor_index != -1:
+            #print("Actor= " + actor + " Index =" + str(actor_index))
+            index = 0
+            for ai in self.edges[1]:
+                if ai == actor_index: #actor index found in list of actors
+                    mi = self.edges[0][index]
+                    print(self.getActorOrMovieAt(mi))
+                index = index + 1
+        else:
+            print("Actor not found")
+        
+        
+    def displayMoviesOfActors(self):
+        lines = ""
+        with open("promptsPS2.txt", encoding='utf8') as f:
+            lines = f.read().strip()
+        splitLines = lines.split("\n")
+        
+        for line in splitLines:
+            #check if the 'searchActor' string is present
+            if "searchActor" in line:
+                actor = line.split("searchActor:",1)[1]
+                self.displayMoviesOfActor(actor)
+                 
+    def displayActorsOfMovies(self):
+        lines = ""
+        with open("promptsPS2.txt", encoding='utf8') as f:
+            lines = f.read().strip()
+        splitLines = lines.split("\n")
+        
+        for line in splitLines:
+            #check if the 'searchMovie' string is present
+            if "searchMovie" in line:
+                movie = line.split("searchMovie:",1)[1]
+                self.displayActorsOfMovie(movie)
+          
     def findMovieRelation(self, movA,movB): 
         return 
     
@@ -82,7 +150,11 @@ class BSGraph:
 def main():
     bsGraph = BSGraph()
     bsGraph.readActMovfile("inputPS2.txt")
-    bsGraph.displayActMov()
+    #bsGraph.displayActMov()
+    bsGraph.displayMoviesOfActors()
+    bsGraph.displayActorsOfMovies()
+    #bsGraph.displayMoviesOfActor("Aamir Khan")
+    #bsGraph.displayMoviesOfActor("Randeep Hooda")
     
 if __name__== "__main__":
     main()
