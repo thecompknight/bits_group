@@ -85,36 +85,38 @@ class BSGraph:
         return -1 # not found
 
     def displayActorsOfMovie(self, movie):
-        print("--------Function displayActorsOfMovie--------")
-        print("Movie name: "+movie)
-        print("List of Actors:")
+        f= open("outputPS2.txt","a+")
+        f.write("--------Function displayActorsOfMovie--------\n")
+        f.write("Movie name: "+movie+"\n")
+        f.write("List of Actors:\n")
         movie_index = self.getActorOrMovieIndex(movie)
         if movie_index != -1:
             index = 0
             for mi in self.edges[0]:
                 if mi == movie_index: #movie index found in list of movies
                     ai = self.edges[1][index]
-                    print(self.getActorOrMovieAt(ai))
+                    f.write(self.getActorOrMovieAt(ai)+"\n")
                 index = index + 1
         else:
-            print("Actor not found")
+            f.write("Movie not found\n")
+        f.close()
             
     def displayMoviesOfActor(self, actor):
-        
-        print("--------Function displayMoviesOfActor--------")
-        print("Actor name: "+actor)
-        print("List of Movies:")
+        f= open("outputPS2.txt","a+")
+        f.write("--------Function displayMoviesOfActor--------\n")
+        f.write("Actor name: "+actor+"\n")
+        f.write("List of Movies:\n")
         actor_index = self.getActorOrMovieIndex(actor)
         if actor_index != -1:
-            #print("Actor= " + actor + " Index =" + str(actor_index))
             index = 0
             for ai in self.edges[1]:
                 if ai == actor_index: #actor index found in list of actors
                     mi = self.edges[0][index]
-                    print(self.getActorOrMovieAt(mi))
+                    f.write(self.getActorOrMovieAt(mi)+"\n")
                 index = index + 1
         else:
-            print("Actor not found")
+            f.write("Actor not found\n")
+        f.close()
         
         
     def displayMoviesOfActors(self):
@@ -128,6 +130,7 @@ class BSGraph:
             if "searchActor" in line:
                 actor = line.split("searchActor:",1)[1]
                 self.displayMoviesOfActor(actor)
+        f.close()
                  
     def displayActorsOfMovies(self):
         lines = ""
@@ -140,6 +143,7 @@ class BSGraph:
             if "searchMovie" in line:
                 movie = line.split("searchMovie:",1)[1]
                 self.displayActorsOfMovie(movie)
+        f.close()
           
     def findMovieRelation(self, movA,movB): 
         return 

@@ -1,33 +1,14 @@
---------Function displayActMov--------
-Total no. of movies: 10
-Total no. of actors: 15
-
-List of movies:
+--------Function displayMoviesOfActor--------
+Actor name: Aamir Khan
+List of Movies:
 Dangal
-Sanju
 PK
+--------Function displayMoviesOfActor--------
+Actor name: Sanjay Dutt
+List of Movies:
 Munna Bhai MBBS
-Zindagi Na Milegi Dobara
-ADHM
-Krish
-Kesari
-Gully Boy
-Highway
-
-List of actors:
+--------Function displayActorsOfMovie--------
+Movie name: PK
+List of Actors:
 Aamir Khan
-Fatima Sana
-Ranbir Kapoor
-Dia Mirza
 Anushka Sharma
-Sanjay Dutt
-Arshad Warsi
-Farhan Akhtar
-Katrina Kaif
-Hritik
-Akshay Kumar
-Parineeti Chopra
-Alia Bhat
-Ranveer Singh
-Randeep Hooda
------------------------------------------
