@@ -41,6 +41,28 @@ class BSGraph:
         #print(self.ActMov)
         #print(self.edges[0])
         #print(self.edges[1])
+
+        #RMovies: Dangal : PK
+        #RMovies: Kesari : Highway
+        #--------Function findMovieRelation --------
+        #Movie A: Dangal
+        #Movie B: PK
+        #Related: Yes, Aamir Khan (if no, display appropriate message)
+        #-----------------------------------------
+    def findMovieRelations(self):
+        lines = ""
+        with open("promptsPS2.txt", encoding='utf8') as fin:
+            lines = fin.read().strip()
+        splitLines = lines.split("\n")
+        
+        for line in splitLines:
+            #check if the 'searchActor' string is present
+            if "RMovies" in line:
+                movies = line.split("RMovies:",1)[1]
+                movies = movies.split(":")
+                #print(movies,movies[0].strip(),movies[1].strip())
+                self.findMovieRelation(movies[0],movies[1])
+        fin.close()
     
     def displayActMov(self):
         f= open("outputPS2.txt","a+")
@@ -90,17 +112,54 @@ class BSGraph:
         f.write("Movie name: "+movie+"\n")
         f.write("List of Actors:\n")
         movie_index = self.getActorOrMovieIndex(movie)
+        
         if movie_index != -1:
             index = 0
             for mi in self.edges[0]:
                 if mi == movie_index: #movie index found in list of movies
                     ai = self.edges[1][index]
-                    f.write(self.getActorOrMovieAt(ai)+"\n")
+                    actor = self.getActorOrMovieAt(ai)
+                    #print(actor)
+                    f.write(actor+"\n")
                 index = index + 1
         else:
             f.write("Movie not found\n")
         f.close()
-            
+    def getActorsOfMovie(self, movie):
+
+        movie_index = self.getActorOrMovieIndex(movie)
+        actors = []
+        if movie_index != -1:
+            index = 0
+            for mi in self.edges[0]:
+                if mi == movie_index: #movie index found in list of movies
+                    ai = self.edges[1][index]
+                    actor = self.getActorOrMovieAt(ai)
+                    #print(actor)
+                    actors.append(actor)
+                index = index + 1
+        return actors
+    
+    def getActorsOfMovie2(self, movie):
+    
+        actors = []
+        print ("looking for actors of movie : " + movie)
+        movie_index = self.getActorOrMovieIndex(movie)
+        print("movie index ="+ str(movie_index))
+        if movie_index != -1:
+            print("valid movie index")
+            index = 0
+            for mi in self.edges[0]:
+                if mi == movie_index: #movie index found in list of movies
+                    print("movie index found at " + str(mi))
+                    ai = self.edges[1][index]
+                    print("corresponding actor index = " + str(ai))
+                    actor = self.getActorOrMovieAt(ai)
+                    
+                    print("Found : " +actor)
+                    actors.append(actor)
+                    index = index + 1
+        return actors
     def displayMoviesOfActor(self, actor):
         f= open("outputPS2.txt","a+")
         f.write("--------Function displayMoviesOfActor--------\n")
@@ -144,21 +203,86 @@ class BSGraph:
                 movie = line.split("searchMovie:",1)[1]
                 self.displayActorsOfMovie(movie)
         f.close()
-          
-    def findMovieRelation(self, movA,movB): 
-        return 
+    def getMovieRelation(self,movA,movB):
+        actA = self.getActorsOfMovie(str(movA.strip()))
+        actB = self.getActorsOfMovie(str(movB.strip()))
+        for actorA in actA:
+            for actorB in actB:
+                if actorA == actorB : #same actor
+                    return actorA
+                    
+        return ""
     
+    def findMovieRelation(self, movA,movB):
+        
+        f = open("outputPS2.txt","a+")
+        
+        f.write("--------Function findMovieRelation --------\n")
+        f.write("Movie A: "+ movA+"\n")
+        f.write("Movie B: "+ movB+"\n")
+        actor = getMovieRelation(movA,movB)
+        if (actor != ""):
+            f.write("Related: Yes, "+ actorA+"\n")
+        else:
+            f.write (" No Relation Found\n")
+        f.close()
+        return
+    
+    def findMovieTransRelations(self):
+        lines = ""
+        with open("promptsPS2.txt", encoding='utf8') as fin:
+            lines = fin.read().strip()
+        splitLines = lines.split("\n")
+        
+        for line in splitLines:
+            #check if the 'searchActor' string is present
+            print (line)
+            if "TMovies" in line:
+                movies = line.split("TMovies:",1)[1]
+                movies = movies.split(":")
+                print (movies[0]+"  "+movies[1])
+                self.findMovieTransRelation(movies[0],movies[1])
+        fin.close()
     def findMovieTransRelation(self, movA, movB):
+        relation_found = False
+        f = open("outputPS2.txt","a+")
+        f.write("--------Function findMovieTransRelation --------\n")
+        f.write("Movie A: "+ movA+"\n")
+        f.write("Movie B: "+ movB+"\n")
+
+        movA.strip()
+        movB.strip()
+        movieSet = set(self.edges[0])
+        #If there are non-zero movies then there will be atleast one actor as well
+        if len(movieSet)!=0:
+            for movieIndex in movieSet:
+                movC = self.ActMov[movieIndex]
+                movC.strip()
+                print ("movA= " + movA + "movC = " + movC)
+                if movC in movA :
+                    continue
+                print(movA+" is not same as " + movC)
+                actor1 = self.getMovieRelation(movA,movC)
+                if actor1 !="":
+                    actor2 = self.getMovieRelation(movC,movB)
+                    if actor2 != "":
+                        #Related: Yes, Dangal > Aamir Khan > PK > Anushka Sharma > ADHM
+                        f.write("Related: Yes, "+movA+" > "+actor1+" > "+ movC + " > " + actor2 + " > " + movB + "\n")
+                        relation_found = True
+        if not relation_found:
+            f.write("No Trans Relation found\n")
+        f.close()
         return
     
 def main():
     bsGraph = BSGraph()
     bsGraph.readActMovfile("inputPS2.txt")
     #bsGraph.displayActMov()
-    bsGraph.displayMoviesOfActors()
-    bsGraph.displayActorsOfMovies()
+    #bsGraph.displayMoviesOfActors()
+    #bsGraph.displayActorsOfMovies()
     #bsGraph.displayMoviesOfActor("Aamir Khan")
     #bsGraph.displayMoviesOfActor("Randeep Hooda")
+    bsGraph.findMovieTransRelations()
     
 if __name__== "__main__":
     main()

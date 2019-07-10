@@ -1,0 +1,9 @@
+searchActor:Aamir Khan
+searchActor:Sanjay Dutt
+searchMovie:PK
+searchMovie:Gully Boy
+RMovies: Dangal : PK
+RMovies: Krish : ADHM
+RMovies: ADHM : PK
+TMovies: Dangal : ADHM
+TMovies: Sanju : ADHM

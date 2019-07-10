@@ -1,14 +1,20 @@
---------Function displayMoviesOfActor--------
-Actor name: Aamir Khan
-List of Movies:
-Dangal
-PK
---------Function displayMoviesOfActor--------
-Actor name: Sanjay Dutt
-List of Movies:
-Munna Bhai MBBS
---------Function displayActorsOfMovie--------
-Movie name: PK
-List of Actors:
-Aamir Khan
-Anushka Sharma
+--------Function findMovieTransRelation --------
+Movie A:  Sanju 
+Movie B:  ADHM
+Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
+--------Function findMovieTransRelation --------
+Movie A:  Dangal 
+Movie B:  ADHM
+Related: Yes,  Dangal  > Aamir Khan > PK > Anushka Sharma >  ADHM
+--------Function findMovieTransRelation --------
+Movie A:  Sanju 
+Movie B:  ADHM
+Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
+--------Function findMovieTransRelation --------
+Movie A:  Dangal 
+Movie B:  ADHM
+Related: Yes,  Dangal  > Aamir Khan > PK > Anushka Sharma >  ADHM
+--------Function findMovieTransRelation --------
+Movie A:  Sanju 
+Movie B:  ADHM
+Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
