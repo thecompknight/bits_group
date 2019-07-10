@@ -220,9 +220,9 @@ class BSGraph:
         f.write("--------Function findMovieRelation --------\n")
         f.write("Movie A: "+ movA+"\n")
         f.write("Movie B: "+ movB+"\n")
-        actor = getMovieRelation(movA,movB)
+        actor = self.getMovieRelation(movA,movB)
         if (actor != ""):
-            f.write("Related: Yes, "+ actorA+"\n")
+            f.write("Related: Yes, "+ actor+"\n")
         else:
             f.write (" No Relation Found\n")
         f.close()
@@ -282,7 +282,7 @@ def main():
     #bsGraph.displayActorsOfMovies()
     #bsGraph.displayMoviesOfActor("Aamir Khan")
     #bsGraph.displayMoviesOfActor("Randeep Hooda")
-    bsGraph.findMovieTransRelations()
+    bsGraph.findMovieRelations()
     
 if __name__== "__main__":
     main()

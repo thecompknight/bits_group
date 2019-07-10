@@ -1,20 +1,12 @@
---------Function findMovieTransRelation --------
-Movie A:  Sanju 
-Movie B:  ADHM
-Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
---------Function findMovieTransRelation --------
+--------Function findMovieRelation --------
 Movie A:  Dangal 
+Movie B:  PK
+Related: Yes, Aamir Khan
+--------Function findMovieRelation --------
+Movie A:  Krish 
 Movie B:  ADHM
-Related: Yes,  Dangal  > Aamir Khan > PK > Anushka Sharma >  ADHM
---------Function findMovieTransRelation --------
-Movie A:  Sanju 
-Movie B:  ADHM
-Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
---------Function findMovieTransRelation --------
-Movie A:  Dangal 
-Movie B:  ADHM
-Related: Yes,  Dangal  > Aamir Khan > PK > Anushka Sharma >  ADHM
---------Function findMovieTransRelation --------
-Movie A:  Sanju 
-Movie B:  ADHM
-Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
+ No Relation Found
+--------Function findMovieRelation --------
+Movie A:  ADHM 
+Movie B:  PK
+Related: Yes, Anushka Sharma
