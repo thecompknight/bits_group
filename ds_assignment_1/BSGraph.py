@@ -2,6 +2,7 @@ class BSGraph:
     ActMov=[]
     edges=[[],[]]
     
+    # The runtime complexity is O(m+n)^2 where m is the number of movies and n is the number of actors
     def readActMovfile(self, inputfile):
         lines = ""
         with open(inputfile, encoding='utf8') as f:
@@ -49,6 +50,7 @@ class BSGraph:
         #Movie B: PK
         #Related: Yes, Aamir Khan (if no, display appropriate message)
         #-----------------------------------------
+    
     def findMovieRelations(self):
         lines = ""
         with open("promptsPS2.txt", encoding='utf8') as fin:
@@ -64,6 +66,7 @@ class BSGraph:
                 self.findMovieRelation(movies[0],movies[1])
         fin.close()
     
+    #The runtime complexity of this function is O(m+n) where m is the number of movies and n is the number of actors
     def displayActMov(self):
         f= open("outputPS2.txt","a+")
         f.write("--------Function displayActMov--------\n")
@@ -92,6 +95,7 @@ class BSGraph:
             
         f.write("-----------------------------------------\n")
         f.close()
+        
     def getActorOrMovieAt(self,index):
         if index<0 or index >= len(self.ActMov):
             return ""
@@ -125,6 +129,7 @@ class BSGraph:
         else:
             f.write("Movie not found\n")
         f.close()
+        
     def getActorsOfMovie(self, movie):
 
         movie_index = self.getActorOrMovieIndex(movie)
@@ -160,6 +165,7 @@ class BSGraph:
                     actors.append(actor)
                     index = index + 1
         return actors
+    
     def displayMoviesOfActor(self, actor):
         f= open("outputPS2.txt","a+")
         f.write("--------Function displayMoviesOfActor--------\n")
@@ -176,7 +182,6 @@ class BSGraph:
         else:
             f.write("Actor not found\n")
         f.close()
-        
         
     def displayMoviesOfActors(self):
         lines = ""
@@ -203,6 +208,7 @@ class BSGraph:
                 movie = line.split("searchMovie:",1)[1]
                 self.displayActorsOfMovie(movie)
         f.close()
+        
     def getMovieRelation(self,movA,movB):
         actA = self.getActorsOfMovie(str(movA.strip()))
         actB = self.getActorsOfMovie(str(movB.strip()))
@@ -243,6 +249,7 @@ class BSGraph:
                 
                 self.findMovieTransRelation(movies[0],movies[1])
         fin.close()
+        
     def findMovieTransRelation(self, movA, movB):
         relation_found = False
         f = open("outputPS2.txt","a+")
