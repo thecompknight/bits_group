@@ -236,11 +236,11 @@ class BSGraph:
         
         for line in splitLines:
             #check if the 'searchActor' string is present
-            print (line)
+            
             if "TMovies" in line:
                 movies = line.split("TMovies:",1)[1]
                 movies = movies.split(":")
-                print (movies[0]+"  "+movies[1])
+                
                 self.findMovieTransRelation(movies[0],movies[1])
         fin.close()
     def findMovieTransRelation(self, movA, movB):
@@ -258,10 +258,8 @@ class BSGraph:
             for movieIndex in movieSet:
                 movC = self.ActMov[movieIndex]
                 movC.strip()
-                print ("movA= " + movA + "movC = " + movC)
                 if movC in movA :
                     continue
-                print(movA+" is not same as " + movC)
                 actor1 = self.getMovieRelation(movA,movC)
                 if actor1 !="":
                     actor2 = self.getMovieRelation(movC,movB)
@@ -277,12 +275,13 @@ class BSGraph:
 def main():
     bsGraph = BSGraph()
     bsGraph.readActMovfile("inputPS2.txt")
-    #bsGraph.displayActMov()
-    #bsGraph.displayMoviesOfActors()
-    #bsGraph.displayActorsOfMovies()
-    #bsGraph.displayMoviesOfActor("Aamir Khan")
-    #bsGraph.displayMoviesOfActor("Randeep Hooda")
+    bsGraph.displayActMov()
+    bsGraph.displayMoviesOfActors()
+    bsGraph.displayActorsOfMovies()
+    bsGraph.displayMoviesOfActor("Aamir Khan")
+    bsGraph.displayMoviesOfActor("Randeep Hooda")
     bsGraph.findMovieRelations()
+    bsGraph.findMovieTransRelations()
     
 if __name__== "__main__":
     main()
