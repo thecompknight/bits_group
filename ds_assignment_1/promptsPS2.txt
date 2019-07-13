@@ -7,3 +7,5 @@ RMovies: Krish : ADHM
 RMovies: ADHM : PK
 TMovies: Dangal : ADHM
 TMovies: Sanju : ADHM
+TMovies: Dangal : PK
+TMovies: Dangal : Kesari 

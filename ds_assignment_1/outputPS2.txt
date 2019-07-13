@@ -31,34 +31,16 @@ Alia Bhat
 Ranveer Singh
 Randeep Hooda
 -----------------------------------------
---------Function displayMoviesOfActor--------
-Actor name: Aamir Khan
-List of Movies:
-Dangal
-PK
---------Function displayMoviesOfActor--------
-Actor name: Sanjay Dutt
-List of Movies:
-Munna Bhai MBBS
 --------Function displayActorsOfMovie--------
-Movie name: PK
+Movie name: Dangal
 List of Actors:
 Aamir Khan
-Anushka Sharma
---------Function displayActorsOfMovie--------
-Movie name: Gully Boy
-List of Actors:
-Alia Bhat
-Ranveer Singh
+Fatima Sana
 --------Function displayMoviesOfActor--------
 Actor name: Aamir Khan
 List of Movies:
 Dangal
 PK
---------Function displayMoviesOfActor--------
-Actor name: Randeep Hooda
-List of Movies:
-Highway
 --------Function findMovieRelation --------
 Movie A:  Dangal 
 Movie B:  PK
@@ -74,8 +56,16 @@ Related: Yes, Anushka Sharma
 --------Function findMovieTransRelation --------
 Movie A:  Dangal 
 Movie B:  ADHM
-Related: Yes,  Dangal  > Aamir Khan > PK > Anushka Sharma >  ADHM
+Related: Yes, Dangal > Aamir Khan > PK > Anushka Sharma > ADHM
 --------Function findMovieTransRelation --------
 Movie A:  Sanju 
 Movie B:  ADHM
-Related: Yes,  Sanju  > Ranbir Kapoor > ADHM > Ranbir Kapoor >  ADHM
+Related: Yes, Sanju > Ranbir Kapoor > ADHM
+--------Function findMovieTransRelation --------
+Movie A:  Dangal 
+Movie B:  PK
+Related: Yes, Dangal > Aamir Khan > PK
+--------Function findMovieTransRelation --------
+Movie A:  Dangal 
+Movie B:  Kesari
+No Trans Relation found
