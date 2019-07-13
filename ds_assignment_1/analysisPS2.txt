@@ -1,0 +1,25 @@
+readActMovfile
+
+   #~~~ Runtime = O(m+n)^2 where m is the number of movies and n is the number of actors
+
+displayActMov
+
+
+   #~~~ Runtime = O(m+n) where m is the number of movies and n is the number of actors
+
+displayMoviesOfActor
+
+   #~~~ Runtime = O(m+n) where m is the number of movies and n is the number of actors
+
+displayActorsOfMovie
+
+   #~~~ Runtime = O(m+n) where m is the number of movies and n is the number of actors
+
+findMovieRelation
+
+   #~~~ Runtime = O(m+n) where m is the number of movies and n is the number of actors
+
+
+findMovieTransRelation
+
+   #~~~ Runtime = O(m+n)*m where m is the number of movies and n is the number of actors
