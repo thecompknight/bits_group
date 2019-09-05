@@ -1,0 +1,50 @@
+1st Number, A:223245
+2nd Number, B:123456
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:223245 A1: 223 A2: 245
+B:123456 B1: 123 B2: 456
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:223 A1: 22 A2: 3
+B:123 B1: 12 B2: 3
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:22 A1: 2 A2: 2
+B:12 B1: 1 B2: 2
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:245 A1: 24 A2: 5
+B:456 B1: 45 B2: 6
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:24 A1: 2 A2: 4
+B:45 B1: 4 B2: 5
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:223 A1: 22 A2: 3
+B:456 B1: 45 B2: 6
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:22 A1: 2 A2: 2
+B:45 B1: 4 B2: 5
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:245 A1: 24 A2: 5
+B:123 B1: 12 B2: 3
+----------------------------
+Intermediate Values of A1, B1 after partition:
+----------------------------
+A:24 A1: 2 A2: 4
+B:12 B1: 1 B2: 2
+----------------------------
+Result:> 223245 x 123456 = 26459834720
+----------------------------
