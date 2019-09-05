@@ -1,9 +1,8 @@
 from math import floor
-def karatsuba(x,y):
-    """Function to multiply 2 numbers in a more efficient manner than the grade school algorithm"""
+def large_multiply(x,y):
     str_x = str(x)
     str_y = str(y)
-    if x<10 or y<10:
+    if len(str_x)==1 or len(str_y)==1:
         return x*y
     else:
         n = max(len(str_x),len(str_y))
@@ -14,9 +13,9 @@ def karatsuba(x,y):
         c = int(y / 10**(nby2))
         d = y % 10**(nby2)
         
-        ac = karatsuba(a,c)
-        bd = karatsuba(b,d)
-        ad_plus_bc = karatsuba(a+b,c+d) - ac - bd
+        ac = large_multiply(a,c)
+        bd = large_multiply(b,d)
+        ad_plus_bc = large_multiply(a+b,c+d) - ac - bd
         
             # this little trick, writing n as 2*nby2 takes care of both even and odd n
         prod = ac * 10**(2*nby2) + (ad_plus_bc * 10**nby2) + bd
@@ -24,7 +23,13 @@ def karatsuba(x,y):
         return prod
 
 def main():
-    ans=karatsuba(int(2554), int(4535))
+    lines = ""
+    with open("inputPS2.txt", encoding='utf8') as fin:
+        lines = fin.read().strip()
+    splitLines = lines.split("\n")
+    num1 = splitLines[0]
+    num2 = splitLines[1]
+    ans=large_multiply(int(num1), int(num2))
     print(ans)
     
 if __name__== "__main__":
